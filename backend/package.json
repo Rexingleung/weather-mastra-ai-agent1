@@ -1,0 +1,50 @@
+{
+  "name": "weather-mastra-ai-agent-backend",
+  "version": "1.0.0",
+  "description": "天气AI助手后端 - 基于Mastra框架",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "mastra dev",
+    "build": "mastra build",
+    "start": "node dist/index.js",
+    "deploy": "wrangler deploy",
+    "test": "jest",
+    "lint": "eslint src --ext .ts,.tsx",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mastra/core": "^0.13.1",
+    "@ai-sdk/openai": "^0.0.66",
+    "zod": "^3.23.8",
+    "axios": "^1.7.7",
+    "graphql": "^16.9.0",
+    "graphql-yoga": "^5.7.0",
+    "@graphql-tools/schema": "^10.0.6",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "typescript": "^5.6.2",
+    "tsx": "^4.19.1",
+    "mastra": "^0.13.1",
+    "wrangler": "^3.78.2",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/parser": "^8.5.0",
+    "eslint": "^9.10.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.12",
+    "ts-jest": "^29.2.5"
+  },
+  "keywords": [
+    "mastra",
+    "ai",
+    "weather",
+    "deepseek",
+    "graphql",
+    "cloudflare",
+    "typescript"
+  ],
+  "author": "Rexingleung",
+  "license": "MIT"
+}
