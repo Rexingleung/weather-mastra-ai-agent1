@@ -1,0 +1,372 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义字体 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* 基础样式 */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* 滚动条样式 */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+
+  /* 选择文本样式 */
+  ::selection {
+    @apply bg-weather-200 text-weather-900;
+  }
+
+  ::-moz-selection {
+    @apply bg-weather-200 text-weather-900;
+  }
+}
+
+/* 组件样式 */
+@layer components {
+  /* 玻璃形态效果 */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  /* 天气渐变背景 */
+  .weather-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  /* 聊天气泡基础样式 */
+  .chat-bubble {
+    @apply relative p-3 rounded-2xl max-w-[80%] word-wrap break-words;
+  }
+
+  .chat-bubble::after {
+    content: '';
+    @apply absolute bottom-0 w-0 h-0 border-[10px] border-transparent;
+  }
+
+  /* 用户消息气泡 */
+  .chat-bubble-user {
+    @apply bg-weather-500 text-white ml-auto;
+  }
+
+  .chat-bubble-user::after {
+    @apply right-[-10px] border-l-weather-500;
+  }
+
+  /* 助手消息气泡 */
+  .chat-bubble-assistant {
+    @apply bg-gray-100 text-gray-800;
+  }
+
+  .chat-bubble-assistant::after {
+    @apply left-[-10px] border-r-gray-100;
+  }
+
+  /* 系统消息气泡 */
+  .chat-bubble-system {
+    @apply bg-yellow-50 text-yellow-800 border border-yellow-200;
+  }
+
+  /* 加载动画 */
+  .loading-dots {
+    display: inline-block;
+  }
+
+  .loading-dots::after {
+    content: '';
+    animation: loading-dots 1.5s infinite;
+  }
+
+  @keyframes loading-dots {
+    0%, 20% {
+      content: '.';
+    }
+    40% {
+      content: '..';
+    }
+    60%, 100% {
+      content: '...';
+    }
+  }
+
+  /* 天气图标动画 */
+  .weather-icon {
+    @apply transition-transform duration-300 hover:scale-110;
+  }
+
+  /* 卡片悬停效果 */
+  .weather-card {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* 按钮样式 */
+  .btn-primary {
+    @apply bg-weather-500 hover:bg-weather-600 text-white px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-gray-100 text-gray-600 hover:text-gray-800 px-3 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  /* 输入框样式 */
+  .input-primary {
+    @apply border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-weather-400 focus:border-transparent transition-all duration-200;
+  }
+
+  /* 错误状态 */
+  .error-state {
+    @apply bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg;
+  }
+
+  /* 成功状态 */
+  .success-state {
+    @apply bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg;
+  }
+
+  /* 警告状态 */
+  .warning-state {
+    @apply bg-yellow-50 border border-yellow-200 text-yellow-700 p-4 rounded-lg;
+  }
+
+  /* 信息状态 */
+  .info-state {
+    @apply bg-blue-50 border border-blue-200 text-blue-700 p-4 rounded-lg;
+  }
+}
+
+/* 工具类 */
+@layer utilities {
+  /* 文本渐变 */
+  .text-gradient {
+    @apply bg-gradient-to-r from-weather-500 to-weather-700 bg-clip-text text-transparent;
+  }
+
+  /* 隐藏滚动条但保持滚动功能 */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 阴影效果 */
+  .shadow-glass {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  .shadow-weather {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 动画延迟工具类 */
+  .animation-delay-75 {
+    animation-delay: 75ms;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-150 {
+    animation-delay: 150ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* 响应式字体大小 */
+  .text-responsive-xl {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  .text-responsive-lg {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  .text-responsive-base {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+}
+
+/* Markdown 内容样式 */
+.prose {
+  @apply text-gray-800 leading-relaxed;
+}
+
+.prose h1 {
+  @apply text-2xl font-bold mb-4 text-gray-900;
+}
+
+.prose h2 {
+  @apply text-xl font-semibold mb-3 text-gray-900;
+}
+
+.prose h3 {
+  @apply text-lg font-medium mb-2 text-gray-800;
+}
+
+.prose p {
+  @apply mb-3 leading-relaxed;
+}
+
+.prose strong {
+  @apply font-semibold text-gray-900;
+}
+
+.prose em {
+  @apply italic text-gray-700;
+}
+
+.prose ul {
+  @apply list-disc list-inside mb-3 space-y-1;
+}
+
+.prose ol {
+  @apply list-decimal list-inside mb-3 space-y-1;
+}
+
+.prose li {
+  @apply text-gray-700;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-weather-400 pl-4 italic text-gray-600 mb-3;
+}
+
+.prose code {
+  @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono text-gray-800;
+}
+
+.prose pre {
+  @apply bg-gray-100 p-4 rounded-lg overflow-x-auto mb-3;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+/* 代码高亮主题 */
+.hljs {
+  @apply bg-gray-900 text-gray-100 p-4 rounded-lg;
+}
+
+.hljs-keyword {
+  @apply text-purple-400;
+}
+
+.hljs-string {
+  @apply text-green-400;
+}
+
+.hljs-number {
+  @apply text-yellow-400;
+}
+
+.hljs-comment {
+  @apply text-gray-500 italic;
+}
+
+.hljs-function {
+  @apply text-blue-400;
+}
+
+.hljs-variable {
+  @apply text-red-400;
+}
+
+/* 移动端优化 */
+@media (max-width: 640px) {
+  .mobile-optimized {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .chat-bubble {
+    @apply max-w-[90%];
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-sm;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-friendly {
+    @apply bg-white text-black shadow-none;
+  }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .dark-mode-auto {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  .dark-mode-auto .glass-effect {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* 减少动画的用户偏好 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .high-contrast {
+    @apply border-2 border-black;
+  }
+}
